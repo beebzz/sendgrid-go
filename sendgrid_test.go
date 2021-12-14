@@ -101,7 +101,7 @@ func TestCustomHTTPClient(t *testing.T) {
 	var custom rest.Client
 	custom.HTTPClient = &http.Client{Timeout: time.Millisecond * 10}
 	_, err := custom.Send(request)
-	assert.NotNil(t, err, "A timeout did not trigger as expected")
+	assert.Nil(t, err, "A timeout did not trigger as expected")
 	assert.True(t, strings.Contains(err.Error(), "Client.Timeout exceeded while awaiting headers"), "We did not receive the Timeout error")
 }
 
